@@ -20,6 +20,9 @@ Esses princípios servem como uma base para pensar não só no código que estam
 
 # 3. Listar e explicar 3 exemplos de tradeoffs:
 #### 1. Velocidade de Desenvolvimento vs. Qualidade do Código
+- Escolher copiar e colar código ao invés de criar uma função reutilizável, só para "entregar logo".
 #### 2. Desempenho vs. Legibilidade
+- Substituir um loop simples por uma versão com caching e manipulação bit a bit para ganhar milissegundos em performance.
 #### 3. Customização vs. Padronização
+- Criar um sistema próprio de autenticação em vez de usar OAuth ou bibliotecas já testadas.
 
