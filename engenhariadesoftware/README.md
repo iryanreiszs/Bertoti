@@ -18,6 +18,8 @@ O livro então se apoia em três princípios que eles consideram fundamentais pa
 - Como escolher entre diferentes caminhos, sempre levando em conta os impactos do tempo e do crescimento.
 Esses princípios servem como uma base para pensar não só no código que estamos escrevendo agora, mas no que ele vai precisar ser daqui a meses ou anos.
 
+# 3. Listar e explicar 3 exemplos de tradeoffs:
+#### 1. Velocidade de Desenvolvimento vs. Qualidade do Código
+#### 2. Desempenho vs. Legibilidade
+#### 3. Customização vs. Padronização
 
-
-3. Listar e explicar 3 exemplos de tradeoffs
