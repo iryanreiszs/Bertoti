@@ -10,9 +10,7 @@ Nesse trecho, os autores ampliam a ideia de engenharia de software: não é só 
 Eles levantam algumas perguntas importantes, como: que práticas ajudam a manter um sistema saudável no longo prazo? Como deixar o código mais sustentável e a engenharia de software mais sólida? O livro não traz uma fórmula mágica, mas a proposta é compartilhar o que o Google aprendeu ao longo de mais de 20 anos lidando com sistemas grandes e complexos.
 Uma ideia central que eles destacam é que engenharia de software é como "programação integrada ao tempo" — ou seja, não basta o código funcionar hoje, ele precisa ser pensado para evoluir, mudar e se adaptar ao longo da sua vida útil, desde a criação até o fim do seu uso.
 O livro então se apoia em três princípios que eles consideram fundamentais para quem trabalha com software:
-- Tempo e Mudança:
-  
-Como o código vai precisar mudar ao longo da sua vida.
+- Tempo e Mudança: Como o código vai precisar mudar ao longo da sua vida.
 - Escala e Crescimento
 Como a organização e os times precisam se adaptar conforme os projetos e a empresa crescem.
 - Decisões e Custos
