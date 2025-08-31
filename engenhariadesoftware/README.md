@@ -172,4 +172,20 @@ a) Veículo
             }
         }
 
+## Saída esperada do teste:
+
+        ✅ Veículo entrou: Civic (Preto) - Placa: ABC-1234
+        ✅ Veículo entrou: Corolla (Prata) - Placa: XYZ-9876
+        ❌ Estacionamento lotado! Não foi possível adicionar Onix (Branco) - Placa: JKL-5555
+        🔎 Veículo encontrado no estacionamento: Civic (Preto) - Placa: ABC-1234
+        🔎 Veículo com placa ZZZ-0000 não está no estacionamento.
+        📋 Veículos no estacionamento:
+         - Civic (Preto) - Placa: ABC-1234
+         - Corolla (Prata) - Placa: XYZ-9876
+        🚗 Veículo saiu: Civic (Preto) - Placa: ABC-1234
+        ⚠️ Veículo com placa ZZZ-0000 não encontrado.
+        📋 Veículos no estacionamento:
+         - Corolla (Prata) - Placa: XYZ-9876
+
+
     
