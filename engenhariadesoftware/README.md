@@ -47,3 +47,86 @@ Esses princípios servem como uma base para pensar não só no código que estam
 # 4. Classes UML:
 <img width="1568" height="950" alt="image" src="https://github.com/user-attachments/assets/c1d25106-592c-42c5-bebf-b0028b5a093c" />
 
+# 5. JAVA:
+
+* Código com duas Classes - Veículo e Estacionamento
+
+import java.util.ArrayList;
+import java.util.List;
+
+class Veiculo {
+    private String placa;
+    private String modelo;
+    private String cor;
+
+    public Veiculo(String placa, String modelo, String cor) {
+        this.placa = placa;
+        this.modelo = modelo;
+        this.cor = cor;
+    }
+
+    public String getPlaca() {
+        return placa;
+    }
+
+    @Override
+    public String toString() {
+        return modelo + " (" + cor + ") - Placa: " + placa;
+    }
+}
+
+class Estacionamento {
+    private int vagas;
+    private List<Veiculo> veiculos;
+
+    public Estacionamento(int vagas) {
+        this.vagas = vagas;
+        this.veiculos = new ArrayList<>();
+    }
+
+    public boolean adicionarVeiculo(Veiculo v) {
+        if (veiculos.size() < vagas) {
+            veiculos.add(v);
+            System.out.println("✅ Veículo entrou: " + v);
+            return true;
+        }
+        System.out.println("❌ Estacionamento lotado! Não foi possível adicionar " + v);
+        return false;
+    }
+
+    public boolean removerVeiculo(String placa) {
+        for (Veiculo v : veiculos) {
+            if (v.getPlaca().equalsIgnoreCase(placa)) {
+                veiculos.remove(v);
+                System.out.println("🚗 Veículo saiu: " + v);
+                return true;
+            }
+        }
+        System.out.println("⚠️ Veículo com placa " + placa + " não encontrado.");
+        return false;
+    }
+
+    public boolean veiculoNoEstacionamento(String placa) {
+        for (Veiculo v : veiculos) {
+            if (v.getPlaca().equalsIgnoreCase(placa)) {
+                System.out.println("🔎 Veículo encontrado no estacionamento: " + v);
+                return true;
+            }
+        }
+        System.out.println("🔎 Veículo com placa " + placa + " não está no estacionamento.");
+        return false;
+    }
+
+    public void listarVeiculos() {
+        System.out.println("📋 Veículos no estacionamento:");
+        for (Veiculo v : veiculos) {
+            System.out.println(" - " + v);
+        }
+        if (veiculos.isEmpty()) {
+            System.out.println("Nenhum veículo estacionado.");
+        }
+    }
+}
+
+
+
