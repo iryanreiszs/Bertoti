@@ -134,6 +134,42 @@ a) Veículo
             }
         }
     }
-    
-    
+
+# 6. Testes:
+
+        public class TesteEstacionamento {
+            public static void main(String[] args) {
+                Estacionamento est = new Estacionamento(2);
+        
+                Veiculo v1 = new Veiculo("ABC-1234", "Civic", "Preto");
+                Veiculo v2 = new Veiculo("XYZ-9876", "Corolla", "Prata");
+                Veiculo v3 = new Veiculo("JKL-5555", "Onix", "Branco");
+        
+                // Teste 1: Carro entrou
+                est.adicionarVeiculo(v1);
+        
+                // Teste 2: Outro carro entrou
+                est.adicionarVeiculo(v2);
+        
+                // Teste 3: Estacionamento cheio (tentando adicionar terceiro carro)
+                est.adicionarVeiculo(v3);
+        
+                // Teste 4: Verificar se carro está no estacionamento
+                est.veiculoNoEstacionamento("ABC-1234");
+                est.veiculoNoEstacionamento("ZZZ-0000");
+        
+                // Teste 5: Listar todos os carros
+                est.listarVeiculos();
+        
+                // Teste 6: Remover carro existente
+                est.removerVeiculo("ABC-1234");
+        
+                // Teste 7: Tentar remover carro que não está
+                est.removerVeiculo("ZZZ-0000");
+        
+                // Teste 8: Listar de novo
+                est.listarVeiculos();
+            }
+        }
+
     
