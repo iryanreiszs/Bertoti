@@ -44,3 +44,6 @@ Esses princípios servem como uma base para pensar não só no código que estam
 #### 3. Customização vs. Padronização
 - Criar um sistema próprio de autenticação em vez de usar OAuth ou bibliotecas já testadas.
 
+# 4. Classes UML:
+<img width="1568" height="950" alt="image" src="https://github.com/user-attachments/assets/c1d25106-592c-42c5-bebf-b0028b5a093c" />
+
