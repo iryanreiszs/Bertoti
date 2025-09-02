@@ -53,6 +53,7 @@ Esses princípios servem como uma base para pensar não só no código que estam
 
 a) Veículo:
 
+```java
         import java.util.ArrayList;
         import java.util.List;
 
@@ -76,12 +77,11 @@ a) Veículo:
             return modelo + " (" + cor + ") - Placa: " + placa;
         }
         }
-
-
+```
 
 
  b) Estacinamento:
-
+```java
         import java.util.ArrayList;
         import java.util.List;
  
@@ -137,9 +137,9 @@ a) Veículo:
             }
         }
     }
-
+```
 # 6. Testes:
-
+```java
         public class TesteEstacionamento {
             public static void main(String[] args) {
                 Estacionamento est = new Estacionamento(2);
@@ -174,7 +174,7 @@ a) Veículo:
                 est.listarVeiculos();
             }
         }
-
+```
 ## Saída esperada do teste:
 
         ✅ Veículo entrou: Civic (Preto) - Placa: ABC-1234
