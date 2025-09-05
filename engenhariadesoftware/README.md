@@ -190,5 +190,204 @@ a) Veículo:
         📋 Veículos no estacionamento:
          - Corolla (Prata) - Placa: XYZ-9876
 
+# 7. SQLite:
 
+* Código com duas classes - Carro e Estacionamento:
+
+a) Carro: 
+
+```java
+public class Carro {
+    private String placa;
+    private String modelo;
+    private String cor;
+
+    public Carro(String placa, String modelo, String cor) {
+        this.placa = placa;
+        this.modelo = modelo;
+        this.cor = cor;
+    }
+
+    public String getPlaca() {
+        return placa;
+    }
+
+    public String getModelo() {
+        return modelo;
+    }
+
+    public String getCor() {
+        return cor;
+    }
+
+    @Override
+    public String toString() {
+        return placa + " | " + modelo + " | " + cor;
+    }
+}
+
+```
+
+b) Estacionamento:
+
+```java
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.*;
+
+public class Estacionamento {
+
+    private Connection connect() {
+        Connection conn = null;
+        try {
+            // Cria (ou abre) o arquivo estacionamento.db
+            conn = DriverManager.getConnection("jdbc:sqlite:estacionamento.db");
+        } catch (SQLException e) {
+            System.out.println("Erro na conexão: " + e.getMessage());
+        }
+        return conn;
+    }
+
+    
+    
+    public void criarTabela() {
+        String sql = "CREATE TABLE IF NOT EXISTS veiculos ("
+                   + "placa TEXT PRIMARY KEY, "
+                   + "modelo TEXT NOT NULL, "
+                   + "cor TEXT NOT NULL"
+                   + ");";
+
+        try (Connection conn = this.connect();
+             Statement stmt = conn.createStatement()) {
+            stmt.execute(sql);
+        } catch (SQLException e) {
+            System.out.println("Erro ao criar tabela: " + e.getMessage());
+        }
+    }
+
+    public void adicionarCarro(Carro carro) {
+        String sql = "INSERT INTO veiculos (placa, modelo, cor) VALUES (?, ?, ?)";
+
+        try (Connection conn = this.connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, carro.getPlaca());
+            pstmt.setString(2, carro.getModelo());
+            pstmt.setString(3, carro.getCor());
+            pstmt.executeUpdate();
+            System.out.println("Carro adicionado: " + carro);
+        } catch (SQLException e) {
+            System.out.println("Erro ao adicionar carro: " + e.getMessage());
+        }
+    }
+
+    public void listarCarros() {
+        String sql = "SELECT * FROM veiculos";
+
+        try (Connection conn = this.connect();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+
+            System.out.println("=== Carros no Estacionamento ===");
+            while (rs.next()) {
+                System.out.println(
+                        rs.getString("placa") + " | " +
+                        rs.getString("modelo") + " | " +
+                        rs.getString("cor"));
+            }
+        } catch (SQLException e) {
+            System.out.println("Erro ao listar carros: " + e.getMessage());
+        }
+    }
+
+    public void buscarCarro(String placa) {
+        String sql = "SELECT * FROM veiculos WHERE placa = ?";
+
+        try (Connection conn = this.connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, placa);
+            ResultSet rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                System.out.println("Carro encontrado: " +
+                        rs.getString("placa") + " | " +
+                        rs.getString("modelo") + " | " +
+                        rs.getString("cor"));
+            } else {
+                System.out.println("Carro com placa " + placa + " não encontrado.");
+            }
+        } catch (SQLException e) {
+            System.out.println("Erro ao buscar carro: " + e.getMessage());
+        }
+    }
+
+    public void removerCarro(String placa) {
+        String sql = "DELETE FROM veiculos WHERE placa = ?";
+
+        try (Connection conn = this.connect();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, placa);
+            int afetados = pstmt.executeUpdate();
+
+            if (afetados > 0) {
+                System.out.println("Carro removido: " + placa);
+            } else {
+                System.out.println("Nenhum carro encontrado com placa " + placa);
+            }
+        } catch (SQLException e) {
+            System.out.println("Erro ao remover carro: " + e.getMessage());
+        }
+    }
+}
+
+```
+
+c) Testes na classe Main:
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        Estacionamento est = new Estacionamento();
+
+        est.criarTabela();
+
+        Carro c1 = new Carro("ABC-1234", "Civic", "Preto");
+        Carro c2 = new Carro("XYZ-9876", "Corolla", "Prata");
+
+        est.adicionarCarro(c1);
+        est.adicionarCarro(c2);
+
+        est.listarCarros();
+
+        est.buscarCarro("ABC-1234");
+        est.buscarCarro("ZZZ-0000");
+
+        est.removerCarro("XYZ-9876");
+
+        est.listarCarros();
+    }
+}
+
+```
+
+d) Saída esperada no console:
+
+```java
+Carro adicionado: ABC-1234 | Civic | Preto
+Carro adicionado: XYZ-9876 | Corolla | Prata
+
+=== Carros no Estacionamento ===
+ABC-1234 | Civic | Preto
+XYZ-9876 | Corolla | Prata
+
+Carro encontrado: ABC-1234 | Civic | Preto
+Carro com placa ZZZ-0000 não encontrado.
+
+Carro removido: XYZ-9876
+
+=== Carros no Estacionamento ===
+ABC-1234 | Civic | Preto
+
+```
     
