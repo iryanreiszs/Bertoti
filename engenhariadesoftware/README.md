@@ -37,10 +37,22 @@ Esses princípios servem como uma base para pensar não só no código que estam
 # 3. Listar e explicar 3 exemplos de tradeoffs:
 #### 1. Velocidade de Desenvolvimento vs. Qualidade do Código
 - Escolher copiar e colar código ao invés de criar uma função reutilizável, só para "entregar logo".
+Esse trade-off aparece quando a equipe prioriza entregar rapidamente em detrimento da qualidade e manutenção do código. Copiar e colar pode parecer mais eficiente no curto prazo, mas cria duplicação, dificulta futuras alterações e aumenta a chance de erros.
+Por outro lado, investir tempo para escrever uma função genérica e bem estruturada atrasa um pouco a entrega inicial, mas facilita correções, testes e reuso no futuro.
+👉 Ganha-se tempo agora, mas paga-se o preço depois com manutenção.
+
 #### 2. Desempenho vs. Legibilidade
 - Substituir um loop simples por uma versão com caching e manipulação bit a bit para ganhar milissegundos em performance.
+Aqui o dilema é entre ter um código rápido e ter um código fácil de entender e manter.
+Técnicas de otimização, como uso de caching, algoritmos complexos ou operações de baixo nível, podem melhorar o desempenho, mas tornam o código mais difícil de ler, depurar e modificar.
+Se o ganho de performance não é realmente necessário (por exemplo, em um sistema sem gargalos críticos), talvez valha mais manter a clareza.
+👉 Otimizar demais pode sacrificar a compreensão e aumentar custos de manutenção.
+
 #### 3. Customização vs. Padronização
 - Criar um sistema próprio de autenticação em vez de usar OAuth ou bibliotecas já testadas.
+Nesse trade-off, a escolha é entre ter controle total e adaptar tudo às suas necessidades (customização) ou usar padrões consolidados e seguros (padronização).
+Criar algo do zero permite personalizar cada detalhe, mas exige muito mais tempo de desenvolvimento, manutenção e testes de segurança. Já adotar uma biblioteca ou protocolo padrão acelera o processo e reduz riscos, mas pode limitar a flexibilidade ou exigir adaptações.
+👉 Customizar dá autonomia, mas aumenta o esforço e o risco; padronizar dá segurança e velocidade, mas pode limitar a liberdade.
 
 # 4. Classes UML:
 <img width="1568" height="950" alt="image" src="https://github.com/user-attachments/assets/c1d25106-592c-42c5-bebf-b0028b5a093c" />
