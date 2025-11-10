@@ -55,7 +55,8 @@ Criar algo do zero permite personalizar cada detalhe, mas exige muito mais tempo
 👉 Customizar dá autonomia, mas aumenta o esforço e o risco; padronizar dá segurança e velocidade, mas pode limitar a liberdade.
 
 # 4. Classes UML:
-<img width="810" height="593" alt="image" src="https://github.com/user-attachments/assets/1090a65e-11b7-404c-a099-19071093d2be" />
+<img width="904" height="595" alt="image" src="https://github.com/user-attachments/assets/847f1dde-00c2-488c-baa0-0c58675876d0" />
+
 
 
 
