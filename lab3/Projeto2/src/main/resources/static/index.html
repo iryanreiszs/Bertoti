@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Produtos</title>
+</head>
+<body>
+
+<h1>Cadastro de Produtos</h1>
+
+<input type="text" id="nome" placeholder="Nome">
+<input type="number" id="preco" placeholder="Preço">
+<button onclick="criar()">Adicionar</button>
+
+<ul id="lista"></ul>
+
+<script>
+    const url = "http://localhost:8080/produtos";
+
+    function carregar() {
+        fetch(url)
+        .then(res => res.json())
+        .then(data => {
+            let lista = document.getElementById("lista");
+            lista.innerHTML = "";
+            data.forEach(p => {
+                lista.innerHTML += `
+                    <li>
+                        ${p.nome} - R$ ${p.preco}
+                        <button onclick="deletar(${p.id})">X</button>
+                    </li>
+                `;
+            });
+        });
+    }
+
+    function criar() {
+        const nome = document.getElementById("nome").value;
+        const preco = document.getElementById("preco").value;
+
+        fetch(url, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ nome, preco })
+        }).then(() => carregar());
+    }
+
+    function deletar(id) {
+        fetch(url + "/" + id, {
+            method: "DELETE"
+        }).then(() => carregar());
+    }
+
+    carregar();
+</script>
+
+</body>
+</html>
